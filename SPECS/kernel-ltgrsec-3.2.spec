@@ -1,8 +1,8 @@
 %global __spec_install_pre %{___build_pre}
 
 # Define the version of the Linux Kernel Archive tarball.
-%define LKAver 3.2.57
-%define GRver 201404182109
+%define LKAver 3.2.58
+%define GRver 201405011748
 
 # Define the buildid, if required.
 #define buildid .
@@ -790,6 +790,9 @@ fi
 %endif
 
 %changelog
+* Thu May 01 2014 Rudy Grigar <basic@drupal.org> - 3.2.58-1
+- Update LKAver 3.2.58, GRver 201405011748
+
 * Mon Apr 21 2014 Rudy Grigar <basic@drupal.org> - 3.2.57-1
 - Updated from elrepo with the grsec patchset.
 - .config files haven't been updated or tested for i686.
