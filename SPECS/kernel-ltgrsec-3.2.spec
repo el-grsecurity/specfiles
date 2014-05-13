@@ -84,7 +84,7 @@
 %endif
 
 # Set pkg_release.
-%define pkg_release 1%{?buildid}%{?dist}
+%define pkg_release 2%{?buildid}%{?dist}
 
 #
 # Three sets of minimum package version requirements in the form of Conflicts.
@@ -325,7 +325,7 @@ popd > /dev/null
 BuildKernel() {
     Flavour=$1
 
-    %{__make} DISABLE_PAX_PLUGINS=y -s distclean
+    %{__make} -s distclean
 
     # Select the correct flavour configuration file.
     if [ -z "${Flavour}" ]; then
@@ -790,6 +790,10 @@ fi
 %endif
 
 %changelog
+* Thu May 13 2014 Rudy Grigar <basic@drupal.org> - 3.2.58-2
+- Update .config with gcc plugin support for grsec, enable more default options.
+- GRver 201405112002
+
 * Thu May 01 2014 Rudy Grigar <basic@drupal.org> - 3.2.58-1
 - Update LKAver 3.2.58, GRver 201405011748
 
