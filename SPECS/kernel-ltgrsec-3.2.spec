@@ -2,7 +2,7 @@
 
 # Define the version of the Linux Kernel Archive tarball.
 %define LKAver 3.2.58
-%define GRver 201405011748
+%define GRver 201405112002
 
 # Define the buildid, if required.
 #define buildid .
