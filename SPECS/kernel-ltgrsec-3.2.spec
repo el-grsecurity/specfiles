@@ -1,8 +1,8 @@
 %global __spec_install_pre %{___build_pre}
 
 # Define the version of the Linux Kernel Archive tarball.
-%define LKAver 3.2.57
-%define GRver 201404182109
+%define LKAver 3.2.58
+%define GRver 201405011748
 
 # Define the buildid, if required.
 #define buildid .
@@ -345,7 +345,7 @@ BuildKernel() {
     # Install the results into the RPM_BUILD_ROOT directory.
     %{__mkdir_p} $RPM_BUILD_ROOT/boot
     %{__install} -m 644 .config $RPM_BUILD_ROOT/boot/config-%{KVRFA}
-    %{__install} -m 600  System.map $RPM_BUILD_ROOT/boot/System.map-%{KVRFA}
+    %{__install} -m 600 System.map $RPM_BUILD_ROOT/boot/System.map-%{KVRFA}
 
 %if %{with_dracut}
     # We estimate the size of the initramfs because rpm needs to take this size
