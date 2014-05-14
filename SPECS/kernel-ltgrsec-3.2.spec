@@ -344,7 +344,7 @@ BuildKernel() {
 
     # Install the results into the RPM_BUILD_ROOT directory.
     %{__mkdir_p} $RPM_BUILD_ROOT/boot
-    %{__install} -m 644 .config $RPM_BUILD_ROOT/boot/config-%{KVRFA}
+    %{__install} -m 600 .config $RPM_BUILD_ROOT/boot/config-%{KVRFA}
     %{__install} -m 600 System.map $RPM_BUILD_ROOT/boot/System.map-%{KVRFA}
 
 %if %{with_dracut}
@@ -790,7 +790,7 @@ fi
 %endif
 
 %changelog
-* Thu May 13 2014 Rudy Grigar <basic@drupal.org> - 3.2.58-2
+* Tue May 13 2014 Rudy Grigar <basic@drupal.org> - 3.2.58-2
 - Update .config with gcc plugin support for grsec, enable more default options.
 - GRver 201405112002
 
