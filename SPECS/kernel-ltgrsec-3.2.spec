@@ -84,7 +84,7 @@
 %endif
 
 # Set pkg_release.
-%define pkg_release 2%{?buildid}%{?dist}
+%define pkg_release 3%{?buildid}%{?dist}
 
 #
 # Three sets of minimum package version requirements in the form of Conflicts.
@@ -790,6 +790,9 @@ fi
 %endif
 
 %changelog
+* Wed May 14 2014 Rudy Grigar <basic@drupal.org> - 3.2.58-3
+- Updated grsec config options with TPE_ALL
+
 * Tue May 13 2014 Rudy Grigar <basic@drupal.org> - 3.2.58-2
 - Update .config with gcc plugin support for grsec, enable more default options.
 - GRver 201405112002
