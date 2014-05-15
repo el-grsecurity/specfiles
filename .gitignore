@@ -2,3 +2,5 @@ BUILD
 BUILDROOT
 RPMS
 SRPMS
+SOURCES/grsecurity*.patch
+SOURCES/linux*.xz
