@@ -1,8 +1,8 @@
 %global __spec_install_pre %{___build_pre}
 
 # Define the version of the Linux Kernel Archive tarball.
-%define LKAver 3.2.58
-%define GRver 201405112002
+%define LKAver 3.2.59
+%define GRver 201406011115
 
 # Define the buildid, if required.
 #define buildid .
@@ -84,7 +84,7 @@
 %endif
 
 # Set pkg_release.
-%define pkg_release 3%{?buildid}%{?dist}
+%define pkg_release 1%{?buildid}%{?dist}
 
 #
 # Three sets of minimum package version requirements in the form of Conflicts.
