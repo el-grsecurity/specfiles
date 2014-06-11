@@ -7,6 +7,11 @@ We are big fans of SELinux -- and in fact suggest enabling SELinux along with Gr
 ## Installing Pre-Built Kernels
 Pre-built kernel RPMs are provided by Tag1 Consulting, made available at http://pkg.tag1consulting.com/kernel/el6/x86_64/
 
+These can be installed easily with yum by first installing the grsec-kernel-release package which installs the yum repo file and GPG key used to sign the kernel packages.
+
+ 1. rpm -Uvh http://pkg.tag1consulting.com/kernel/el6/x86_64/grsec-kernel-release-6-1.noarch.rpm
+ 2. yum install kernel-ltgrsec
+
 ## Building Your Own Grsecurity Kernel for Enterprise Linux
 The Grsecurity patches use gcc macro expansion that is not supported in the gcc version shipped with EL6. For this to work, we build the kernels using the newer gcc (4.8) packages provided by the [CERN Developer Toolset repo](http://linux.web.cern.ch/linux/devtoolset/). We suggest building the kernel under 'mock', and have provided a mock configuration file which includes the devtoolset-2 repo.
 
