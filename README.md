@@ -9,8 +9,8 @@ Pre-built kernel RPMs are provided by Tag1 Consulting, made available at http://
 
 These can be installed easily with yum by first installing the grsec-kernel-release package which installs the yum repo file and GPG key used to sign the kernel packages.
 
- 1. rpm -Uvh http://pkg.tag1consulting.com/kernel/el6/x86_64/grsec-kernel-release-6-1.noarch.rpm
- 2. yum install kernel-ltgrsec
+ 1. ```rpm -Uvh http://pkg.tag1consulting.com/kernel/el6/x86_64/grsec-kernel-release-6-1.noarch.rpm```
+ 2. ```yum install kernel-ltgrsec```
 
 Packages are signed with the GPG key located at http://pkg.tag1consulting.com/RPM-GPG-KEY-TAG1
 
