@@ -12,6 +12,12 @@ These can be installed easily with yum by first installing the grsec-kernel-rele
  1. rpm -Uvh http://pkg.tag1consulting.com/kernel/el6/x86_64/grsec-kernel-release-6-1.noarch.rpm
  2. yum install kernel-ltgrsec
 
+Packages are signed with the GPG key located at http://pkg.tag1consulting.com/RPM-GPG-KEY-TAG1
+
+```
+ Key fingerprint = 2B1F 2ACA C636 E756 DD87  4F17 9D03 36F1 C0E9 5DD3
+```
+
 ## Building Your Own Grsecurity Kernel for Enterprise Linux
 The Grsecurity patches use gcc macro expansion that is not supported in the gcc version shipped with EL6. For this to work, we build the kernels using the newer gcc (4.8) packages provided by the [CERN Developer Toolset repo](http://linux.web.cern.ch/linux/devtoolset/). We suggest building the kernel under 'mock', and have provided a mock configuration file which includes the devtoolset-2 repo.
 
