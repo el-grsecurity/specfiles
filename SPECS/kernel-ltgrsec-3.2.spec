@@ -84,7 +84,7 @@
 %endif
 
 # Set pkg_release.
-%define pkg_release 1%{?buildid}%{?dist}
+%define pkg_release 3%{?buildid}%{?dist}
 
 #
 # Three sets of minimum package version requirements in the form of Conflicts.
@@ -155,16 +155,20 @@ AutoProv: yes
 #
 # List the packages used during the kernel-ltgrsec build.
 #
-BuildRequires: asciidoc, bash >= 2.03, bc, binutils >= 2.12, bzip2, diffutils
-BuildRequires: findutils, gawk, gcc >= 3.4.2, gzip, m4, make >= 3.78
+BuildRequires: asciidoc, bash >= 2.03, bc, bzip2, diffutils
+BuildRequires: findutils, gawk, gzip, m4, make >= 3.78
 BuildRequires: module-init-tools, net-tools, patch >= 2.5.4, patchutils, perl
-BuildRequires: redhat-rpm-config, rpm-build >= 4.8.0-7, sh-utils, tar, xmlto
+BuildRequires: redhat-rpm-config, sh-utils, tar, xmlto
 %if %{with_perf}
 BuildRequires: audit-libs-devel, binutils-devel, bison, elfutils-devel
-BuildRequires: elfutils-libelf-devel, gtk2-devel, newt-devel
+BuildRequires: gtk2-devel, newt-devel
 BuildRequires: perl(ExtUtils::Embed), python-devel, zlib-devel
 %endif
 BuildRequires: python
+# devtoolset-2 build
+BuildRequires: devtoolset-2-elfutils, devtoolset-2-toolchain, devtoolset-2-runtime
+BuildRequires: devtoolset-2-gcc, devtoolset-2-elfutils-libs, devtoolset-2-binutils
+BuildRequires: devtoolset-2-gcc-plugin-devel devtoolset-2-elfutils-libelf
 
 BuildConflicts: rhbuildsys(DiskFree) < 7Gb
 
@@ -175,9 +179,6 @@ Source2: config-%{version}-i686-NONPAE
 Source3: config-%{version}-x86_64
 
 Patch0: https://grsecurity.net/stable/grsecurity-3.0-%{LKAver}-%{GRver}.patch
-
-# Do not package the source tarball.
-NoSource: 0
 
 %description
 This package provides the Linux kernel (vmlinuz), the core of any
@@ -322,6 +323,17 @@ pushd linux-%{version}-%{release}.%{_target_cpu} > /dev/null
 popd > /dev/null
 
 %build
+# grsecurity requires newer gcc than is available on el6, use gcc from devtoolset scl. 
+%if 0%{?rhel} == 6
+PATH=/opt/rh/devtoolset-2/root/usr/bin/:$PATH
+export PATH
+export LDFLAGS=-L/opt/rh/devtoolset-2/root/usr/lib
+export CPPFLAGS=-isystem/opt/rh/devtoolset-2/root/usr/include
+export CC=/opt/rh/devtoolset-2/root/usr/bin/gcc
+export CPP=/opt/rh/devtoolset-2/root/usr/bin/cpp
+export CXX=/opt/rh/devtoolset-2/root/usr/bin/c++
+%endif
+
 BuildKernel() {
     Flavour=$1
 
@@ -790,6 +802,12 @@ fi
 %endif
 
 %changelog
+* Tue Jun 10 2014 Jeff Sheltren <jeff@tag1consulting.com> - 3.2.59-3
+- Adjust buildrequires, removing unused packages and duplicates provided by devtoolset-2
+
+* Fri Jun  6 2014 Jeff Sheltren <jeff@tag1consulting.com> - 3.2.59-2
+- Build with devtoolset-2 gcc (4.8)
+
 * Wed May 14 2014 Rudy Grigar <basic@drupal.org> - 3.2.58-3
 - Updated grsec config options with TPE_ALL
 
