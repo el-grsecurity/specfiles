@@ -2,7 +2,7 @@
 
 # Define the version of the Linux Kernel Archive tarball.
 %define LKAver 3.2.61
-%define GRver 201407312002
+%define GRver 201408032011
 
 # Define the buildid, if required.
 #define buildid .
@@ -84,7 +84,7 @@
 %endif
 
 # Set pkg_release.
-%define pkg_release 1%{?buildid}%{?dist}
+%define pkg_release 2%{?buildid}%{?dist}
 
 #
 # Three sets of minimum package version requirements in the form of Conflicts.
@@ -802,6 +802,9 @@ fi
 %endif
 
 %changelog
+* Mon Aug  4 2014 Jeff Sheltren <jeff@tag1consulting.com> - 3.2.61-2
+- Bump grsecurity patch to latest release (201408032011).
+
 * Sat Aug  2 2014 Rudy Grigar <basic@drupal.org> - 3.2.61
 - Bump versions of kernel and grsecurity patch.
 
