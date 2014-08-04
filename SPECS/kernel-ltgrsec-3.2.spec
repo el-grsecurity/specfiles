@@ -84,7 +84,7 @@
 %endif
 
 # Set pkg_release.
-%define pkg_release 3%{?buildid}%{?dist}
+%define pkg_release 1%{?buildid}%{?dist}
 
 #
 # Three sets of minimum package version requirements in the form of Conflicts.
@@ -802,6 +802,9 @@ fi
 %endif
 
 %changelog
+* Sat Aug  2 2014 Rudy Grigar <basic@drupal.org> - 3.2.61
+- Bump versions of kernel and grsecurity patch.
+
 * Tue Jun 10 2014 Jeff Sheltren <jeff@tag1consulting.com> - 3.2.59-3
 - Adjust buildrequires, removing unused packages and duplicates provided by devtoolset-2
 
