@@ -179,6 +179,7 @@ sufficient to build modules against the kernel package.
 Summary: Various bits of documentation found in the kernel sources.
 Group: Documentation
 Provides: kernel-doc = %{version}-%{release}
+Conflicts: kernel-doc < %{version}-%{release}
 %description doc
 This package provides documentation files from the kernel sources.
 Various bits of information about the Linux kernel and the device
@@ -378,6 +379,7 @@ hwcap 1 nosegneg"
     touch -r $RPM_BUILD_ROOT/lib/modules/%{KVRFA}/build/Makefile $RPM_BUILD_ROOT/lib/modules/%{KVRFA}/build/include/linux/autoconf.h
     touch -r $RPM_BUILD_ROOT/lib/modules/%{KVRFA}/build/Makefile $RPM_BUILD_ROOT/lib/modules/%{KVRFA}/build/include/linux/version.h
     touch -r $RPM_BUILD_ROOT/lib/modules/%{KVRFA}/build/Makefile $RPM_BUILD_ROOT/lib/modules/%{KVRFA}/build/include/generated/autoconf.h
+    touch -r $RPM_BUILD_ROOT/lib/modules/%{KVRFA}/build/Makefile $RPM_BUILD_ROOT/lib/modules/%{KVRFA}/build/include/generated/uapi/linux/version.h
 
     # Remove any 'left-over' .cmd files.
     /usr/bin/find $RPM_BUILD_ROOT/lib/modules/%{KVRFA}/build/ -type f -name "*.cmd" | xargs --no-run-if-empty %{__rm} -f
@@ -639,6 +641,8 @@ fi
 
 %changelog
 * Thu Aug 21 2014 Rudy Grigar <basic@drupal.org> - 3.14.17-1
+- Use 3.14 long term kernel
+- Compile virtio drivers into kernel (https://bugzilla.kernel.org/show_bug.cgi?id=60758)
 - Bump kernel+grsecurity patch to latest release.
 
 * Mon Aug  4 2014 Jeff Sheltren <jeff@tag1consulting.com> - 3.2.61-2
