@@ -2,7 +2,7 @@
 
 # Define the version of the Linux Kernel Archive tarball.
 %define LKAver 3.14.17
-%define GRver 201408192019
+%define GRver 201408260041
 
 # Define the buildid, if required.
 #define buildid .
@@ -60,7 +60,7 @@
 %endif
 
 # Set pkg_release.
-%define pkg_release 1%{?buildid}%{?dist}
+%define pkg_release 2%{?buildid}%{?dist}
 
 #
 # Three sets of minimum package version requirements in the form of Conflicts.
@@ -640,6 +640,9 @@ fi
 %endif
 
 %changelog
+* Tue Aug 26 2014 Rudy Grigar <basic@drupal.org> - 3.14.17-2
+- Bump grsecurity patch to latest release (201408260041).
+
 * Thu Aug 21 2014 Rudy Grigar <basic@drupal.org> - 3.14.17-1
 - Use 3.14 long term kernel
 - Compile virtio drivers into kernel (https://bugzilla.kernel.org/show_bug.cgi?id=60758)
